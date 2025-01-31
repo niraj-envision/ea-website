@@ -1,0 +1,268 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 60 10% 98%;
+  --foreground: 60 10% 10%;
+  --card: 60 10% 98%;
+  --card-foreground: 60 10% 10%;
+  --popover: 60 10% 98%;
+  --popover-foreground: 60 10% 10%;
+  --primary: 142 76% 36%;
+  --primary-foreground: 60 10% 98%;
+  --secondary: 48 96% 53%;
+  --secondary-foreground: 60 10% 10%;
+  --muted: 60 5% 96%;
+  --muted-foreground: 60 5% 40%;
+  --accent: 48 96% 53%;
+  --accent-foreground: 60 10% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 60 10% 98%;
+  --border: 60 5% 90%;
+  --input: 60 5% 90%;
+  --ring: 142 76% 36%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 220 20% 10%;
+  --foreground: 60 10% 98%;
+  --card: 220 20% 12%;
+  --card-foreground: 60 10% 98%;
+  --popover: 220 20% 10%;
+  --popover-foreground: 60 10% 98%;
+  --primary: 142 76% 36%;
+  --primary-foreground: 220 20% 10%;
+  --secondary: 48 96% 53%;
+  --secondary-foreground: 220 20% 10%;
+  --muted: 220 20% 15%;
+  --muted-foreground: 60 5% 60%;
+  --accent: 48 96% 53%;
+  --accent-foreground: 220 20% 10%;
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 60 10% 98%;
+  --border: 220 20% 20%;
+  --input: 220 20% 20%;
+  --ring: 142 76% 36%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Futuristic banknote-inspired background */
+/* Futuristic banknote-inspired background */
+/* Base futuristic background (light & dark) */
+.futuristic-bg {
+  position: relative;
+  overflow: hidden;
+
+  /* Existing background pattern layers, for example: */
+  background-image:
+    /* Subtle grid lines for light mode */
+    linear-gradient(to right, rgba(0, 255, 128, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 128, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 15% 20%, rgba(0, 255, 128, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 40%);
+
+  background-size:
+    50px 50px,
+    0px 50px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-repeat: repeat, repeat, no-repeat, no-repeat, no-repeat;
+}
+
+/* Dark mode variant (optional) */
+.dark .futuristic-bg {
+  background-image:
+    linear-gradient(to right, rgba(0, 255, 128, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 255, 128, 0.12) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 15% 20%, rgba(0, 255, 128, 0.08) 0%, transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 40%);
+}
+
+/* 
+   Individual glow lines that animate from top to bottom.
+   Each line is absolutely positioned. We'll place several
+   lines at different x positions and offset their animation
+   timing for variety.
+*/
+.futuristic-bg .glow-line {
+  position: absolute;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 255, 128, 0) 0%,
+    rgba(0, 255, 128, 0.7) 50%,  /* more visible mid-section */
+    rgba(0, 255, 128, 0) 100%
+  );
+  opacity: 0.6;
+  animation: lineDrop 4s ease-in-out infinite;
+}
+
+/* Place each line at different left positions & delay the animation */
+.futuristic-bg .glow-line:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+.futuristic-bg .glow-line:nth-child(2) {
+  left: 30%;
+  animation-delay: 1.5s;
+}
+.futuristic-bg .glow-line:nth-child(3) {
+  left: 50%;
+  animation-delay: 0.5s;
+}
+.futuristic-bg .glow-line:nth-child(4) {
+  left: 70%;
+  animation-delay: 2s;
+}
+.futuristic-bg .glow-line:nth-child(5) {
+  left: 90%;
+  animation-delay: 3s;
+}
+
+/* Keyframes for the lines dropping from top: -10% to bottom: 110% */
+@keyframes lineDrop {
+  0% {
+    top: -10%;
+    height: 0;
+  }
+  20% {
+    height: 10%;
+  }
+  80% {
+    height: 100%;
+  }
+  100% {
+    top: 110%;
+    height: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* Hexagon pattern */
+.hexagon-pattern {
+  background-color: transparent;
+  background-image: 
+    linear-gradient(30deg, rgba(255,255,255,0.1) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.1) 87.5%, rgba(255,255,255,0.1)),
+    linear-gradient(150deg, rgba(255,255,255,0.1) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.1) 87.5%, rgba(255,255,255,0.1)),
+    linear-gradient(30deg, rgba(255,255,255,0.1) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.1) 87.5%, rgba(255,255,255,0.1)),
+    linear-gradient(150deg, rgba(255,255,255,0.1) 12%, transparent 12.5%, transparent 87%, rgba(255,255,255,0.1) 87.5%, rgba(255,255,255,0.1)),
+    linear-gradient(60deg, rgba(255,255,255,0.1) 25%, transparent 25.5%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1)),
+    linear-gradient(60deg, rgba(255,255,255,0.1) 25%, transparent 25.5%, transparent 75%, rgba(255,255,255,0.1) 75%, rgba(255,255,255,0.1));
+  background-size: 40px 70px;
+  background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+}
+
+/* Dots pattern */
+.dots-pattern {
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.2) 2px,
+    transparent 2px
+  );
+  background-size: 30px 30px;
+}
+
+/* Wave pattern */
+.wave-pattern {
+  background: linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.1) 50%, transparent 52%);
+  background-size: 20px 20px;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-wave {
+  animation: wave 20s linear infinite;
+}
+
+/* Existing gradient animation */
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+
