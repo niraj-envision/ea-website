@@ -416,38 +416,38 @@ export default function Home() {
                 {
                   name: "Niraj Dahal ",
                   role: "CEO & Founder",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "With over 12 years of experience in Government Services, IT & consulting, Niraj leads our vision for innovative solutions.",
+                  avatar: "/nkd.png?height=400&width=400",
+                  bio: "With over 8 years of experience in Government Services, IT & consulting, Niraj leads our vision for innovative solutions.",
                 },
                 {
-                  name: "Michael Chen",
-                  role: "CTO",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "A pioneer in AI and machine learning, Michael drives our technical strategy and innovation.",
+                  name: "Shushant Sigdel",
+                  role: "Founder/Engineer",
+                  avatar: "/sss.png?height=400&width=400",
+                  bio: "Over 12+ years of experiance in skill training sector. Worked with various government entities and donor funded project.",
                 },
                 {
-                  name: "Priya Patel",
-                  role: "Head of AI Research",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "Leading our AI initiatives, Priya brings expertise in deep learning and neural networks.",
+                  name: "Saroj Rajbhandari",
+                  role: "Senior Software Developer",
+                  avatar: "/srb.png?height=400&width=400",
+                  bio: "Saroj has more than 15 years of experiance in developing softwares for private and government institutions. He leads the technical team in EA.",
                 },
                 {
-                  name: "David Kim",
-                  role: "Lead Solution Architect",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "David specializes in designing scalable solutions for government and enterprise clients.",
+                  name: "Jwala Nepal",
+                  role: "BDS",
+                  avatar: "/jn.png?height=400&width=400",
+                  bio: "Jwala leads our business development. She overseas our business development and ensures our solutions provide exceptional user experiences across all platforms.",
                 },
                 {
-                  name: "Emma Rodriguez",
-                  role: "UX Director",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "Emma ensures our solutions provide exceptional user experiences across all platforms.",
+                  name: "Ishwor Thapa",
+                  role: "Backend Developer",
+                  avatar: "/IT.png?height=400&width=400",
+                  bio: "Ishwor has more than 11 years of experiance in software development field. He has experiance in managing complex IT project in Neapl & india and specializes in designing scalable solutions for government and enterprise clients.",
                 },
                 {
-                  name: "James Wilson",
-                  role: "Senior Project Manager",
-                  avatar: "/placeholder.svg?height=400&width=400",
-                  bio: "James brings years of experience in managing complex IT implementations.",
+                  name: "Shishir Parajuli",
+                  role: "Frontend Developer",
+                  avatar: "/sb.png?height=400&width=400",
+                  bio: "Shishir brings years of experience in UI/UX design in complex IT implementations.",
                 },
               ].map((member, index) => (
                 <motion.div
@@ -660,6 +660,7 @@ export default function Home() {
                 </p>
               </address>
             </div>
+
 
             {/* Newsletter */}
             <div className="">
