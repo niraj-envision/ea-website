@@ -86,8 +86,9 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <Button
-                size="lg"
-                className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground"
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground"
+                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Discover Our Services <ArrowRight className="ml-2" />
               </Button>
@@ -419,12 +420,7 @@ export default function Home() {
                   avatar: "/nkd.png?height=400&width=400",
                   bio: "With over 8 years of experience in Government Services, IT & consulting, Niraj leads our vision for innovative solutions.",
                 },
-                {
-                  name: "Shushant Sigdel",
-                  role: "Founder/Engineer",
-                  avatar: "/sss.png?height=400&width=400",
-                  bio: "Over 12+ years of experiance in skill training sector. Worked with various government entities and donor funded project.",
-                },
+
                 {
                   name: "Saroj Rajbhandari",
                   role: "Senior Software Developer",
