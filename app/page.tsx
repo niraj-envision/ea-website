@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, ArrowUpRight, Sparkles, ShieldCheck, Cpu, GraduationCap, Smartphone, Building2 } from "lucide-react"
+import { ArrowRight, ArrowUpRight, Sparkles, ShieldCheck, Cpu, GraduationCap, Smartphone, Building2, FlaskConical, Scale } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 
@@ -145,6 +145,94 @@ export default function Home() {
               description="Digital experience and internal systems for Nepal's state-owned reinsurer."
               status="Engagement"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Research / R&D */}
+      <section className="border-t border-border/40">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-6">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-primary mb-4">
+                <FlaskConical className="size-3.5" />
+                In the lab
+              </div>
+              <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
+                A Nepali-language<br />
+                <span className="text-gradient">AI for Nepal's law.</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Active R&amp;D: a retrieval-grounded, fine-tuned LLM that helps lawyers, students, and citizens search and understand Nepal's court verdicts — built on the Nepal Kanoon Patrika and Supreme Court Faisala archives.
+              </p>
+              <p className="mt-4 font-devanagari text-muted-foreground">
+                नेपाली भाषामा फैसला खोज्न र बुझ्न।
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href="/work/nepali-legal-ai">
+                    Read the case study <ArrowRight className="ml-1.5 size-4" />
+                  </Link>
+                </Button>
+                <span className="inline-flex items-center gap-2 text-xs text-muted-foreground">
+                  <span className="size-1.5 rounded-full bg-accent animate-pulse-soft" />
+                  Active research · v1 in 2.5–3 months
+                </span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6">
+              <Card className="p-7 bg-card relative overflow-hidden">
+                <div className="absolute -top-20 -right-20 size-64 rounded-full bg-primary/10 blur-3xl" aria-hidden />
+                <div className="relative">
+                  <Scale className="size-7 text-primary" strokeWidth={1.5} />
+                  <p className="mt-5 text-xs uppercase tracking-wider text-muted-foreground">
+                    Stack
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {[
+                      "Gemma 4 31B",
+                      "QLoRA",
+                      "Unsloth",
+                      "BGE-M3",
+                      "Qdrant",
+                      "bge-reranker-v2",
+                      "Surya OCR",
+                      "RTX 5090",
+                    ].map((t) => (
+                      <span
+                        key={t}
+                        className="inline-flex items-center rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+
+                  <p className="mt-6 text-xs uppercase tracking-wider text-muted-foreground">
+                    Architecture
+                  </p>
+                  <ol className="mt-3 space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary font-mono text-xs mt-0.5">01</span>
+                      <span>Scrape + OCR NKP and Faisala archives</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary font-mono text-xs mt-0.5">02</span>
+                      <span>Section-aware chunking, BGE-M3 embeddings</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary font-mono text-xs mt-0.5">03</span>
+                      <span>Fine-tune Gemma 4 on legal-Nepali instruction set</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary font-mono text-xs mt-0.5">04</span>
+                      <span>Hybrid retrieval → rerank → cite-grounded answer</span>
+                    </li>
+                  </ol>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

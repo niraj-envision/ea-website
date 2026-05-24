@@ -31,6 +31,15 @@ const projects = [
     href: "/hamroskill",
   },
   {
+    name: "Nepali Legal AI",
+    client: "Envision Analytics (R&D)",
+    category: "AI · Legal · Nepali NLP",
+    summary:
+      "RAG + fine-tuned LLM over Nepal Kanoon Patrika and Supreme Court Faisala archives. Gemma 4 31B base, BGE-M3 retrieval, citation-grounded answers in formal Nepali.",
+    status: "Active R&D",
+    href: "/work/nepali-legal-ai",
+  },
+  {
     name: "MoICS PMIS",
     client: "Ministry of Industry, Commerce & Supplies, Nepal",
     category: "Government · PMIS",
@@ -96,8 +105,8 @@ export default function WorkPage() {
                       className={`size-1.5 rounded-full ${
                         p.status === "Live"
                           ? "bg-primary animate-pulse-soft"
-                          : p.status === "Pre-launch"
-                            ? "bg-accent"
+                          : p.status === "Pre-launch" || p.status === "Active R&D"
+                            ? "bg-accent animate-pulse-soft"
                             : "bg-muted-foreground/50"
                       }`}
                     />
