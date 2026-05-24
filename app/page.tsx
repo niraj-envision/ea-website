@@ -1,691 +1,463 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { Navigation } from "./components/navigation"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-
-import {
-  ArrowRight,
-  Rocket,
-  Sun,
-  Moon,
-  BarChart,
-  Globe,
-  Cpu,
-  Facebook,
-  Twitter,
-  LinkedinIcon as LinkedIn,
-  Instagram,
-  Smartphone,
-  BookOpen,
-} from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link"
 import Image from "next/image"
+import { ArrowRight, ArrowUpRight, Sparkles, ShieldCheck, Cpu, GraduationCap, Smartphone, Building2 } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-    }
-  }, [darkMode])
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
-  }
-
   return (
-    <div className="min-h-screen flex flex-col futuristic-bg">
-      <Navigation />
-      <button
-        onClick={toggleDarkMode}
-        className="fixed top-4 right-4 z-50 p-2 bg-primary text-primary-foreground rounded-full shadow-lg"
-      >
-        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-      </button>
-      <main className="flex-grow">
-        
-        {/* Hero Section */}
-        <motion.section
-          id="home"
-          className="relative h-screen flex items-center justify-center overflow-hidden"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20"></div>
-
-          <div className="relative z-10 text-center">
-            <motion.h1
-              className="text-4xl md:text-8xl font-bold mb-4 text-foreground"
-              initial={{ opacity: 0, y: -50, scale: 0.8, rotate: -5 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
-            >
-              Envision Analytics
-            </motion.h1>
-            <motion.p
-              className="text-xl md:text-2xl mb-8 text-foreground/80"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Futuristic IT Solutions for a Better Tomorrow
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Button
-                  size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Discover Our Services <ArrowRight className="ml-2" />
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
+        <div className="absolute inset-0 bg-spotlight" aria-hidden />
+        <div className="relative container mx-auto px-4 sm:px-6 pt-24 pb-20 sm:pt-32 sm:pb-28">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-3 py-1 text-xs text-muted-foreground mb-6">
+              <span className="size-1.5 rounded-full bg-primary animate-pulse-soft" />
+              Envision Analytics · Kathmandu, Nepal
+            </div>
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight leading-[1.05]">
+              Software for Nepal's <span className="text-gradient">next era</span>.
+            </h1>
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+              We build modern systems for government, ship AI-powered products, and operate{" "}
+              <Link href="/hamroskill" className="text-foreground underline underline-offset-4 decoration-primary/60 hover:decoration-primary">
+                HamroSkill
+              </Link>{" "}
+              — Nepal's marketplace for skilled services.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/hamroskill">
+                  See HamroSkill <ArrowRight className="ml-1.5 size-4" />
+                </Link>
               </Button>
-            </motion.div>
-          </div>
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute bg-primary/10 w-2 h-2 rounded-full"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  scale: [1, 2, 1],
-                  opacity: [1, 0.5, 1],
-                }}
-                transition={{
-                  duration: Math.random() * 3 + 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Services Section */}
-        <motion.section
-          id="services"
-          className="py-16 rounded-2xl"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-4 rounded-2xl">
-            <h2 className="text-4xl font-bold mb-12 text-center">Our Services</h2>
-            <div
-              className="
-                grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 
-                rounded-2xl
-                bg-white/40 dark:bg-gray-800/40 
-                backdrop-blur-md 
-                shadow-[0_0_80px_rgba(8,_112,_184,_0.2)]
-                dark:shadow-[0_20px_80px_rgba(255,255,255,0.1)]
-                border border-gray-200/60 
-                p-8
-                transition-all duration-500 ease-out 
-                transform-gpu 
-                relative
-                before:absolute 
-                before:inset-0 
-                before:bg-gradient-to-br 
-                before:from-primary/20 
-                before:to-secondary/20 
-              "
-            >
-              {[
-                {
-                  title: "Government Solutions",
-                  description: "Streamlining public services with cutting-edge technology",
-                  icon: Globe,
-                  content:
-                    "Our e-governance solutions enhance efficiency and transparency in government operations. We develop secure digital platforms for citizen services, document management, and inter-departmental communication.",
-                },
-                {
-                  title: "Education Technology",
-                  description: "Empowering institutions with innovative learning solutions",
-                  icon: BookOpen,
-                  content:
-                    "We create adaptive learning platforms, virtual classrooms, and student management systems. Our EdTech solutions incorporate AI for personalized learning experiences and data-driven insights for educators.",
-                },
-                {
-                  title: "Startup Solutions",
-                  description: "Powering the next generation of innovative businesses",
-                  icon: Rocket,
-                  content:
-                    "From MVP development to scaling your platform, we provide end-to-end technical support for startups. Our expertise in cloud infrastructure and agile methodologies ensures rapid growth and flexibility.",
-                },
-                {
-                  title: "AI Integration",
-                  description: "Enhancing web applications with artificial intelligence",
-                  icon: Cpu,
-                  content:
-                    "We integrate cutting-edge AI and machine learning capabilities into web applications. Our solutions include natural language processing, computer vision, and predictive analytics to drive intelligent decision-making.",
-                },
-                {
-                  title: "Data Analytics",
-                  description: "Unlocking insights from your data",
-                  icon: BarChart,
-                  content:
-                    "Our data analytics services help businesses make data-driven decisions. We develop custom dashboards, implement big data solutions, and provide predictive modeling to uncover valuable insights from your data.",
-                },
-                {
-                  title: "Mobile App Development",
-                  description: "Creating powerful, user-friendly mobile experiences",
-                  icon: Smartphone,
-                  content:
-                    "We design and develop cutting-edge mobile applications for iOS and Android platforms. Our team ensures seamless user experiences, robust functionality, and integration with backend services for optimal performance.",
-                },
-              ].map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group transform transition-transform duration-300 ease-out hover:scale-[1.02]"
-                >
-                  <Card className="bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 h-full border-2 border-transparent hover:border-primary overflow-hidden group-hover:shadow-lg">
-                    <CardHeader className="relative overflow-hidden pb-10">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <service.icon className="w-12 h-12 text-primary mb-4 relative z-10 transform group-hover:scale-110 transition-transform duration-300" />
-                      <CardTitle className="text-2xl relative z-10">{service.title}</CardTitle>
-                      <CardDescription className="relative z-10">{service.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-card-foreground/80">{service.content}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
+              <Button asChild variant="outline" size="lg">
+                <Link href="/work">Read case studies</Link>
+              </Button>
             </div>
-          </div>
-        </motion.section>
-
-        {/* About Section */}
-        <motion.section
-          id="about"
-          className="py-16"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">About Envision Analytics</h2>
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <p className="text-lg mb-4">
-                  Envision Analytics Private Limited is a forward-thinking IT company dedicated to developing innovative
-                  solutions for diverse sectors including government, education, and startups. Founded in 2015, we have
-                  rapidly grown to become a leader in providing cutting-edge technology solutions.
-                </p>
-                <p className="text-lg mb-4">
-                  Our team of over 100 experts specializes in creating advanced applications, integrating AI
-                  technologies, and providing top-notch consultancy services to drive digital transformation and growth.
-                  We pride ourselves on our ability to blend technical expertise with domain knowledge to deliver
-                  tailored solutions that address our clients' unique challenges.
-                </p>
-                <p className="text-lg mb-4">
-                  At Envision Analytics, we're committed to pushing the boundaries of what's possible in technology. Our
-                  research and development team constantly explores emerging technologies to ensure we're always at the
-                  forefront of innovation. This dedication to advancement allows us to provide our clients with
-                  solutions that are not just current, but future-proof.
-                </p>
-              </motion.div>
-              <motion.div
-                className="md:w-1/2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-              >
-                <div className="relative w-full h-64 md:h-96">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-lg"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 bg-primary/10 backdrop-blur-sm rounded-full flex items-center justify-center animate-pulse-slow">
-                      <Rocket size={64} className="text-primary" />
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {[...Array(3)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        className="absolute w-full h-full border-2 border-primary/20 rounded-full"
-                        animate={{
-                          scale: [1, 1.2, 1],
-                          opacity: [0.1, 0.5, 0.1],
-                        }}
-                        transition={{
-                          duration: 3,
-                          delay: i * 0.5,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Projects Section */}
-        <motion.section
-          id="projects"
-          className="py-16"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
-            <div
-              className="
-                grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
-                bg-white/40 dark:bg-gray-800/40
-                backdrop-blur-md
-                rounded-2xl
-                shadow-[0_0_80px_rgba(8,_112,_184,_0.2)]
-                dark:shadow-[0_20px_80px_rgba(255,255,255,0.1)]
-                border border-gray-200/30
-                p-8
-                transition-all duration-500 ease-out
-                transform-gpu
-                relative
-                before:absolute
-                before:inset-0
-                before:bg-gradient-to-br
-                before:from-primary/20
-                before:to-secondary/20
-              "
-            >
-              {[
-                {
-                  title: "SkillConnect",
-                  description: "On-demand skilled worker booking platform",
-                  content:
-                    "A mobile and web application that connects skilled workers with customers needing services like plumbing, electrical work, and construction. The platform uses AI for smart matching and includes real-time tracking and secure payment systems.",
-                },
-                {
-                  title: "SmartGov Portal",
-                  description: "Comprehensive e-governance solution",
-                  content:
-                    "An integrated platform for government services, offering citizens easy access to various departments, online form submissions, and status tracking. It includes a robust backend for inter-departmental communication and data management.",
-                },
-                {
-                  title: "EduTech Pro",
-                  description: "AI-powered learning management system",
-                  content:
-                    "A comprehensive education platform that combines virtual classrooms, adaptive learning paths, and advanced analytics. It uses AI to personalize learning experiences and provides educators with insights to improve teaching methods.",
-                },
-                {
-                  title: "HealthAI",
-                  description: "AI-driven health diagnostics tool",
-                  content:
-                    "An innovative application that uses machine learning algorithms to assist in early disease detection and health monitoring. It analyzes medical imaging and patient data to provide preliminary diagnoses and risk assessments.",
-                },
-                {
-                  title: "SmartCity Dashboard",
-                  description: "IoT-based city management system",
-                  content:
-                    "A centralized platform for city administrators to monitor and manage various urban systems including traffic, waste management, and energy consumption. It integrates data from IoT sensors to provide real-time insights and predictive maintenance.",
-                },
-                {
-                  title: "FinTech Analyzer",
-                  description: "AI-powered financial analysis tool",
-                  content:
-                    "A sophisticated platform for financial institutions that uses AI and machine learning to analyze market trends, assess risks, and provide investment insights. It includes natural language processing to analyze financial news and reports.",
-                },
-              ].map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group transform transition-transform duration-300 ease-out hover:scale-[1.02]"
-                >
-                  <Card className="bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 h-full border-2 border-transparent hover:border-primary overflow-hidden group-hover:shadow-lg">
-                    <CardHeader>
-                      <CardTitle>{project.title}</CardTitle>
-                      <CardDescription>{project.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-card-foreground/80">{project.content}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Team Section */}
-        <motion.section
-          id="team"
-          className="py-16"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold mb-12 text-center">Our Team</h2>
-            <div
-              className="
-                grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8
-                bg-white/40 dark:bg-gray-800/40
-                backdrop-blur-md
-                rounded-2xl
-                shadow-[0_0_80px_rgba(8,_112,_184,_0.2)]
-                dark:shadow-[0_20px_80px_rgba(255,255,255,0.1)]
-                border border-gray-200/30
-                p-8
-                transition-all duration-500 ease-out
-                transform-gpu
-                relative
-                before:absolute
-                before:inset-0
-                before:bg-gradient-to-br
-                before:from-primary/20
-                before:to-secondary/20
-                before:rounded-2xl
-                before:-z-10
-              "
-            >
-              {[
-                {
-                  name: "Niraj Dahal ",
-                  role: "CEO & Founder",
-                  avatar: "/nkd.png?height=400&width=400",
-                  bio: "With over 8 years of experience in Government Services, IT & consulting, Niraj leads our vision for innovative solutions.",
-                },
-
-                {
-                  name: "Saroj Rajbhandari",
-                  role: "Senior Software Developer",
-                  avatar: "/srb.png?height=400&width=400",
-                  bio: "Saroj has more than 15 years of experiance in developing softwares for private and government institutions. He leads the technical team in EA.",
-                },
-                {
-                  name: "Jwala Nepal",
-                  role: "BDS",
-                  avatar: "/jn.png?height=400&width=400",
-                  bio: "Jwala leads our business development. She overseas our business development and ensures our solutions provide exceptional user experiences across all platforms.",
-                },
-                {
-                  name: "Ishwor Thapa",
-                  role: "Backend Developer",
-                  avatar: "/IT.png?height=400&width=400",
-                  bio: "Ishwor has more than 11 years of experiance in software development field. He has experiance in managing complex IT project in Neapl & india and specializes in designing scalable solutions for government and enterprise clients.",
-                },
-                {
-                  name: "Shishir Parajuli",
-                  role: "Frontend Developer",
-                  avatar: "/sb.png?height=400&width=400",
-                  bio: "Shishir brings years of experience in UI/UX design in complex IT implementations.",
-                },
-              ].map((member, index) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group transform transition-transform duration-300 ease-out hover:scale-[1.02]"
-                >
-                  <Card className="bg-card/50 backdrop-blur-sm hover:bg-card/80 transition-all duration-300 h-full border-2 border-transparent overflow-hidden group-hover:shadow-lg hover:border-primary">
-                    <CardHeader className="text-center">
-                      <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
-                        <Image
-                          src={member.avatar || "/placeholder.svg"}
-                          alt={member.name}
-                          fill
-                          className="object-cover transition-transform group-hover:scale-110"
-                        />
-                      </div>
-                      <CardTitle className="text-xl">{member.name}</CardTitle>
-                      <CardDescription className="text-primary font-medium">
-                        {member.role}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-center text-card-foreground/80">{member.bio}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Contact Section */}
-        <motion.section
-          id="contact"
-          className="py-16"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 text-center">Get in Touch</h2>
-            {/* Centered container with max-width */}
-            <div className="max-w-3xl mx-auto">
-              <div
-                className="
-                  lg:grid-cols-3 gap-8
-                  bg-white/40 dark:bg-gray-800/40
-                  backdrop-blur-md
-                  rounded-2xl
-                  shadow-[0_0_80px_rgba(8,_112,_184,_0.2)]
-                  dark:shadow-[0_20px_80px_rgba(255,255,255,0.1)]
-                  border border-gray-200/30
-                  p-8
-                  transition-all duration-500 ease-out
-                  transform-gpu
-                  relative
-                  before:absolute
-                  before:inset-0
-                  before:bg-gradient-to-br
-                  before:from-primary/20
-                  before:to-secondary/20
-                  before:rounded-2xl
-                  before:-z-10
-                "
-              >
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl -z-10"></div>
-
-                <Card className="bg-card/50 backdrop-blur-sm ">
-                  <CardContent className="p-6">
-                    <form className="space-y-4">
-                      <div>
-                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-foreground ">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          className="w-full p-2 border rounded bg-stone-100 dark:bg-teal-950 text-foreground"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-foreground">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          className="w-full p-2 border rounded bg-stone-100 dark:bg-teal-950 text-foreground"
-                          required
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="message" className="block mb-2 text-sm font-medium text-foreground">
-                          Message
-                        </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          rows={4}
-                          className="w-full p-2 border rounded bg-stone-100 dark:bg-teal-950 text-foreground"
-                          required
-                        ></textarea>
-                      </div>
-                      <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground">
-                        Send Message
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
+            <dl className="mt-14 grid grid-cols-3 gap-4 sm:gap-10 max-w-lg">
+              <div>
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Founded</dt>
+                <dd className="mt-1 font-display text-xl sm:text-2xl font-semibold">2024</dd>
               </div>
-            </div>
+              <div>
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Team</dt>
+                <dd className="mt-1 font-display text-xl sm:text-2xl font-semibold">9</dd>
+              </div>
+              <div>
+                <dt className="text-[10px] sm:text-xs uppercase tracking-wider text-muted-foreground">Based in</dt>
+                <dd className="mt-1 font-display text-xl sm:text-2xl font-semibold">Kathmandu</dd>
+              </div>
+            </dl>
           </div>
-        </motion.section>
-      </main>
-
-      {/* Footer */}
-      <motion.footer
-        className="relative py-12 overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-        viewport={{ once: true }}
-      >
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r 
-          from-[rgba(250,204,21,0.2)] 
-          via-[rgba(74,222,128,0.2)] 
-          to-[rgba(250,204,21,0.3)] 
-          animate-gradient-x"
-        ></div>
-  
-        {/* Pattern overlay */}
-        <div className="absolute inset-2px opacity-10">
-          <div className="absolute inset-0 pattern-grid animate-pattern"></div>
         </div>
+      </section>
 
-        {/* Content container with glass effect */}
-        <div className="relative container mx-auto px-4 z-10  text-white">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Company Info */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sign%20Stamp%20Logo%20(1)-8diKk2DAhelwpotPXXziarnHlD2vy4.png"
-                  alt="Envision Analytics Logo"
-                  width={200}
-                  height={50}
-                  className="filter drop-shadow-[0_4px_8px_rgba(255,255,255,0.5)] hover:drop-shadow-[0_8px_16px_rgba(255,255,255,0.6)] transition-all duration-300"
-                />
+      {/* Flagship — HamroSkill */}
+      <section className="border-t border-border/40 bg-secondary/20">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-primary mb-4">
+                <Sparkles className="size-3.5" />
+                Flagship product
               </div>
-              <p className="transition-all duration-300 text-gray-700 dark:text-gray-200 text-sm">
-                Futuristic IT Solutions for a Better Tomorrow
+              <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight leading-[1.1]">
+                HamroSkill
+                <span className="block font-devanagari text-2xl sm:text-3xl text-muted-foreground mt-2 font-normal">
+                  हाम्रो सीप — Skilled hands. Trusted homes.
+                </span>
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Nepal's two-sided marketplace for skilled services — plumbers, electricians, technicians.
+                Built across iOS, Android, and Web from one codebase, with real-time dispatch, in-app chat,
+                and bilingual English / Devanagari support.
               </p>
-              <div className="flex space-x-4">
-                {/* Social icons with hover effects */}
-                <a href="#" className="hover:scale-110 hover:text-yellow-300 text-gray-700 dark:text-gray-200">
-                  <Facebook size={20} />
-                </a>
-                <a href="#" className="hover:scale-110 hover:text-yellow-300 text-gray-700 dark:text-gray-200">
-                  <Twitter size={20} />
-                </a>
-                <a href="#" className="hover:scale-110 hover:text-yellow-300 text-gray-700 dark:text-gray-200">
-                  <LinkedIn size={20} />
-                </a>
-                <a href="#" className="hover:scale-110 hover:text-yellow-300 text-gray-700 dark:text-gray-200">
-                  <Instagram size={20} />
-                </a>
+              <ul className="mt-6 space-y-3 text-sm">
+                {[
+                  "17 screens shipped across mobile + web",
+                  "Phone + OTP authentication, role-based dispatch",
+                  "KYC verification flow for service professionals",
+                  "Bilingual EN / नेपाली, dark mode, 6 accent themes",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="mt-1.5 size-1.5 rounded-full bg-primary flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href="/hamroskill">
+                    See the product <ArrowRight className="ml-1.5 size-4" />
+                  </Link>
+                </Button>
+                <Button asChild variant="ghost">
+                  <Link href="/hamroskill#waitlist">Join waitlist</Link>
+                </Button>
               </div>
             </div>
 
-            {/* Quick Links */}
-            <div className="">
-              <h4 className="text-lg font-semibold mb-4 transition-all duration-300 text-gray-700 dark:text-gray-200">Quick Links</h4>
-              <nav className="flex flex-col space-y-2 transition-all duration-300 text-gray-700 dark:text-gray-200">
-                {['Home', 'Services', 'About', 'Projects', 'Team', 'Contact'].map((link) => (
-                  <a 
-                    key={link} 
-                    href={`#${link.toLowerCase()}`} 
-                    className="hover:text-yellow-300 hover:translate-x-2 transition-all duration-300"
-                  >
-                    {link}
-                  </a>
-                ))}
-              </nav>
-            </div>
-
-            {/* Contact Info */}
-            <div className="">
-              <h4 className="text-lg font-semibold mb-4 text-gray-800 dark:text-white">Contact Us</h4>
-              <address className="not-italic space-y-2">
-                <p className="hover:translate-x-2 transition-all duration-300 text-gray-700 dark:text-gray-200">
-                  Tokha-10
-                </p>
-                <p className="hover:translate-x-2 transition-all duration-300 text-gray-700 dark:text-gray-200">
-                  Tokha Municipality 44600
-                </p>
-                <p className="hover:translate-x-2 transition-all duration-300 text-gray-700 dark:text-gray-200">
-                  Email: info@envisionanalytics.com
-                </p>
-                <p className="hover:translate-x-2 transition-all duration-300 text-gray-700 dark:text-gray-200">
-                  Phone: +977 985-1111-527
-                </p>
-              </address>
-            </div>
-
-
-            {/* Newsletter */}
-            <div className="">
-              <h4 className="text-lg transition-all duration-300 text-gray-700 dark:text-gray-200 font-semibold mb-4">Newsletter</h4>
-              <p className="transition-all duration-300 text-gray-700 dark:text-gray-200 mb-2">Stay updated with our latest news and offers.</p>
-              <form className="flex group">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="p-2 rounded-l-md w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-all duration-300" 
-                />
-                <button
-                  type="submit"
-                  className="bg-yellow-400 text-gray-800 p-2 rounded-r-md hover:bg-yellow-300 transition-all duration-300 group-hover:shadow-lg"
-                >
-                  Subscribe
-                </button>
-              </form>
+            {/* Phone mockup */}
+            <div className="order-1 lg:order-2 flex justify-center">
+              <PhoneMockup />
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Copyright */}
-          <div className="mt-8 pt-8 border-t border-white/20 text-center backdrop-blur-sm">
-            <p className="hover:text-yellow-300 transition-colors transition-all duration-300 text-gray-700 dark:text-gray-200">
-              &copy; 2025 Envision Analytics Private Limited. All rights reserved.
+      {/* Trusted by Government */}
+      <section className="border-t border-border/40">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-primary mb-4">
+              <ShieldCheck className="size-3.5" />
+              Government clients
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
+              Building for Nepal's institutions.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              From provincial training boards to state insurance — we ship production systems for Nepali government and public-sector clients.
             </p>
           </div>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-5">
+            <ClientCard
+              name="PCTVET"
+              subtitle="Province Council for Technical Education and Vocational Training"
+              description="Bilingual training management system covering events, trainees, contracts, procurements, and skill tests across 8 user roles."
+              status="Live · pctvet.com"
+              href="/work/pctvet"
+              external="https://pctvet.com"
+            />
+            <ClientCard
+              name="MoICS"
+              subtitle="Ministry of Industry, Commerce & Supplies"
+              description="Project management information system for ministry-level program tracking and reporting."
+              status="Engagement"
+            />
+            <ClientCard
+              name="Nepal Re"
+              subtitle="Nepal Reinsurance Company"
+              description="Digital experience and internal systems for Nepal's state-owned reinsurer."
+              status="Engagement"
+            />
+          </div>
         </div>
-      </motion.footer>
+      </section>
+
+      {/* What we build */}
+      <section className="border-t border-border/40 bg-secondary/20">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="max-w-2xl mb-14">
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
+              What we build.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Four practice areas, one team. Every project ships from Kathmandu.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <ServiceCard
+              icon={Building2}
+              title="Government Digital"
+              description="E-governance platforms, ministry PMIS, training management systems. Bilingual EN/Nepali by default."
+            />
+            <ServiceCard
+              icon={Smartphone}
+              title="Marketplace Products"
+              description="Two-sided platforms across iOS, Android, and Web. Real-time dispatch, KYC, payments, chat."
+            />
+            <ServiceCard
+              icon={Cpu}
+              title="AI Integration"
+              description="LLM-powered workflows, deep-research agents, document understanding, intelligent matching."
+            />
+            <ServiceCard
+              icon={GraduationCap}
+              title="Training Systems"
+              description="Multi-stakeholder TMS for vocational councils — events, trainers, trainees, skill tests, finance."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Open source */}
+      <section className="border-t border-border/40">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="max-w-2xl mb-12">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-wider text-primary mb-4">
+              <Cpu className="size-3.5" />
+              Open source
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
+              We work in the open.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground">
+              Selected projects we maintain publicly on GitHub.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5">
+            <OpenSourceCard
+              name="deep-research"
+              tagline="Open-source OpenAI Deep Research agent."
+              description="Get the same capability without paying $200/mo. Tweak behavior with adjustable breadth and depth. Run 5 minutes or 5 hours — it auto-adjusts."
+              href="https://github.com/niraj-envision/deep-research"
+              language="TypeScript"
+            />
+            <OpenSourceCard
+              name="clawdbot"
+              tagline="Your own personal AI assistant. Any OS. Any platform."
+              description="Cross-platform AI assistant — the lobster way 🦞. Built with TypeScript, ships everywhere."
+              href="https://github.com/niraj-envision/clawdbot"
+              language="TypeScript"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Team teaser */}
+      <section className="border-t border-border/40 bg-secondary/20">
+        <div className="container mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div className="max-w-xl">
+              <h2 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
+                A small team that ships.
+              </h2>
+              <p className="mt-5 text-lg text-muted-foreground">
+                Nine engineers, designers, and product people across Kathmandu.
+              </p>
+            </div>
+            <Button asChild variant="outline">
+              <Link href="/about">
+                Meet the team <ArrowRight className="ml-1.5 size-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-5 gap-3 sm:gap-5">
+            {[
+              { name: "Niraj Dahal", role: "CEO & Founder", avatar: "/nkd.png" },
+              { name: "Saroj Rajbhandari", role: "Sr. Software Developer", avatar: "/srb.png" },
+              { name: "Jwala Nepal", role: "BDS", avatar: "/jn.png" },
+              { name: "Ishwor Thapa", role: "Backend Developer", avatar: "/IT.png" },
+              { name: "Shishir Parajuli", role: "Frontend Developer", avatar: "/sb.png" },
+            ].map((m) => (
+              <div key={m.name} className="group">
+                <div className="aspect-square relative overflow-hidden rounded-lg border border-border bg-card">
+                  <Image
+                    src={m.avatar}
+                    alt={m.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 20vw, 150px"
+                  />
+                </div>
+                <p className="mt-2 text-xs sm:text-sm font-medium truncate">{m.name}</p>
+                <p className="text-[10px] sm:text-xs text-muted-foreground truncate">{m.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-border/40">
+        <div className="container mx-auto px-4 sm:px-6 py-24 sm:py-32">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="font-display text-4xl sm:text-6xl font-semibold tracking-tight">
+              Building something?<br />
+              <span className="text-gradient">Let's talk.</span>
+            </h2>
+            <p className="mt-6 text-lg text-muted-foreground">
+              We take on a small number of new engagements each quarter.
+              If your problem is interesting, we'd like to hear about it.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Button asChild size="lg">
+                <Link href="/contact">
+                  Start a conversation <ArrowRight className="ml-1.5 size-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <a href="mailto:info@envisionanalytics.net">info@envisionanalytics.net</a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function ClientCard({
+  name,
+  subtitle,
+  description,
+  status,
+  href,
+  external,
+}: {
+  name: string
+  subtitle: string
+  description: string
+  status: string
+  href?: string
+  external?: string
+}) {
+  const isLive = status.toLowerCase().includes("live")
+  const inner = (
+    <Card className="h-full p-6 bg-card hover:border-primary/40 transition-colors group">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h3 className="font-display text-xl font-semibold">{name}</h3>
+          <p className="text-xs text-muted-foreground mt-1">{subtitle}</p>
+        </div>
+        {href && (
+          <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0 mt-1" />
+        )}
+      </div>
+      <p className="mt-5 text-sm text-muted-foreground leading-relaxed">{description}</p>
+      <div className="mt-6 inline-flex items-center gap-1.5 text-xs">
+        <span className={`size-1.5 rounded-full ${isLive ? "bg-primary animate-pulse-soft" : "bg-muted-foreground/50"}`} />
+        <span className="text-muted-foreground">{status}</span>
+      </div>
+    </Card>
+  )
+
+  if (href) return <Link href={href}>{inner}</Link>
+  if (external)
+    return (
+      <a href={external} target="_blank" rel="noopener noreferrer">
+        {inner}
+      </a>
+    )
+  return inner
+}
+
+function ServiceCard({
+  icon: Icon,
+  title,
+  description,
+}: {
+  icon: React.ElementType
+  title: string
+  description: string
+}) {
+  return (
+    <Card className="p-6 bg-card hover:border-primary/40 transition-colors h-full">
+      <Icon className="size-6 text-primary" strokeWidth={1.5} />
+      <h3 className="mt-5 font-display text-lg font-semibold">{title}</h3>
+      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{description}</p>
+    </Card>
+  )
+}
+
+function OpenSourceCard({
+  name,
+  tagline,
+  description,
+  href,
+  language,
+}: {
+  name: string
+  tagline: string
+  description: string
+  href: string
+  language: string
+}) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="block group">
+      <Card className="p-6 sm:p-8 bg-card hover:border-primary/40 transition-colors h-full">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h3 className="font-display text-2xl font-semibold">
+              <span className="text-muted-foreground">github.com/</span>
+              <span>{name}</span>
+            </h3>
+            <p className="mt-2 text-sm font-medium">{tagline}</p>
+          </div>
+          <ArrowUpRight className="size-5 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" />
+        </div>
+        <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{description}</p>
+        <div className="mt-5 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+          <span className="size-2 rounded-full bg-blue-500" />
+          {language}
+        </div>
+      </Card>
+    </a>
+  )
+}
+
+function PhoneMockup() {
+  return (
+    <div className="relative animate-float">
+      <div className="absolute -inset-8 bg-gradient-to-br from-primary/30 to-accent/30 blur-3xl rounded-full" aria-hidden />
+      <div className="relative w-[280px] h-[560px] rounded-[2.75rem] border border-border bg-card shadow-2xl p-3">
+        <div className="w-full h-full rounded-[2.25rem] overflow-hidden bg-background border border-border relative">
+          {/* Status bar */}
+          <div className="h-6 flex items-center justify-center">
+            <div className="w-24 h-5 rounded-full bg-foreground/90" />
+          </div>
+          {/* App content mockup */}
+          <div className="px-5 pt-3 pb-6 space-y-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-[10px] text-muted-foreground">Welcome back</p>
+                <p className="text-sm font-semibold">Niraj</p>
+              </div>
+              <div className="size-8 rounded-full bg-primary/20" />
+            </div>
+
+            <div className="rounded-2xl bg-gradient-to-br from-primary to-primary/70 p-4 text-primary-foreground">
+              <p className="text-[10px] opacity-80">Need a pro now?</p>
+              <p className="text-lg font-semibold mt-1">Call Now</p>
+              <div className="mt-3 flex items-center justify-between text-[10px]">
+                <span className="opacity-80">12 pros nearby</span>
+                <span className="size-1.5 rounded-full bg-white animate-pulse-soft" />
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground mb-2">
+                Services
+              </p>
+              <div className="grid grid-cols-4 gap-2">
+                {["P", "E", "C", "M"].map((c) => (
+                  <div key={c} className="aspect-square rounded-xl bg-secondary flex items-center justify-center text-xs font-semibold">
+                    {c}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground mb-2">
+                Top rated
+              </p>
+              <div className="space-y-2">
+                {[
+                  { n: "Ram T.", s: "Plumber · ★ 4.9" },
+                  { n: "Sita M.", s: "Electrician · ★ 4.8" },
+                ].map((p) => (
+                  <div key={p.n} className="flex items-center gap-3 p-2 rounded-lg bg-secondary/50">
+                    <div className="size-8 rounded-full bg-accent/30" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs font-medium">{p.n}</p>
+                      <p className="text-[10px] text-muted-foreground">{p.s}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
